@@ -1,0 +1,35 @@
+budget-buddy/
+│
+├── app/                         # 📦 FastAPI backend logic
+│   ├── __init__.py
+│   ├── main.py                  # FastAPI entrypoint
+│   ├── routes.py                # API endpoints
+│   ├── parser.py                # Bank/payment CSV/PDF parsing
+│   ├── categorizer.py           # LLM & rule-based categorization
+│   ├── storage.py               # SQLite/JSON data storage logic
+│   └── recurring.py             # Recurring transaction detection
+│
+├── ui/                          # 💻 Streamlit frontend
+│   ├── __init__.py
+│   └── dashboard.py             # Upload, view, tag, ask queries
+│
+├── data/                        # 📁 User data storage
+│   ├── sample_statements/       # Example CSVs/PDFs
+│   └── mappings.json            # User-specific category mappings
+│
+├── models/                      # 🤖 Prompt templates, LLM utils
+│   ├── __init__.py
+│   ├── prompts.py               # Prompt templates
+│   └── llm_wrapper.py           # Azure OpenAI logic
+│
+├── static/                      # 🖼️ Images, icons, logos
+│   └── logo.png
+│
+├── tests/                       # ✅ Unit and integration tests
+│   └── test_categorizer.py
+│
+├── .env                         # 🔐 API keys and config (ignored by Git)
+├── README.md                    # 📘 Project overview
+├── ROADMAP.md                   # 🛣️ Feature plan and status
+├── requirements.txt             # 📦 Python dependencies
+└── run.sh                       # 🚀 Simple bash script to launch app
