@@ -3,7 +3,6 @@
 
 ## 📅 `ROADMAP.md`
 
-```markdown
 # 🛣️ Budget Buddy – Project Roadmap
 
 A plan to build the smartest personal finance tracker powered by LLMs.

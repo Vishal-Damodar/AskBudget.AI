@@ -39,3 +39,31 @@ Budget Buddy is a smart personal finance assistant that helps you understand whe
 git clone https://github.com/your-username/budget-buddy.git
 cd budget-buddy
 pip install -r requirements.txt
+```
+---
+
+## 🧠 Setup LLM (Optional)
+Configure your OpenAI / Azure API key in .env
+
+Default categorization will work without LLM too (rule-based fallback)
+
+---
+
+## ▶️ Run App
+bash
+Copy
+Edit
+uvicorn app.main:app --reload   # FastAPI backend
+streamlit run app/ui.py         # UI to upload & view summaries
+📸 Screenshots
+Coming soon...
+
+---
+
+## 📜 License
+MIT – Use it, build on it, share it.
+
+---
+
+## 🙌 Credits
+Built by Vishal Damodar

@@ -1,0 +1,30 @@
+2025-04-10 11:16:06,284 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:16:08,398 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:19:49,056 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:19:51,398 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:27:13,419 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:27:15,657 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:30:38,469 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:30:40,650 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:31:36,040 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:31:38,238 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:35:30,053 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:35:32,285 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:36:51,752 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:36:54,068 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:38:25,965 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:38:28,181 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 11:39:05,771 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 11:39:07,990 [INFO] Successfully parsed statement with 0 transactions
+2025-04-10 12:02:47,542 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-10 12:02:49,963 [INFO] Successfully parsed statement with 46 transactions
+2025-04-11 09:45:12,203 [INFO] Uploading file: PhonePe_Statement_Mar2025_Apr2025 (1).pdf, Source selected: phonepe
+2025-04-11 09:45:15,802 [INFO] Successfully parsed statement with 0 transactions
+2025-04-11 09:45:28,295 [INFO] Uploading file: 6519_08042025221042_unlocked.pdf, Source selected: phonepe
+2025-04-11 09:45:30,761 [INFO] Successfully parsed statement with 46 transactions
+2025-04-11 09:52:13,563 [INFO] Uploading file: PhonePe_Statement_Mar2025_Apr2025 (1).pdf, Source selected: phonepe
+2025-04-11 09:52:16,036 [ERROR] Parsing failed: time data "Apr 07, 2025" doesn't match format "%d %b %Y", at position 0. You might want to try:
+    - passing `format` if your strings have a consistent format;
+    - passing `format='ISO8601'` if your strings are all ISO8601 but not necessarily in exactly the same format;
+    - passing `format='mixed'`, and the format will be inferred for each element individually. You might want to use `dayfirst` alongside this.
+2025-04-11 09:53:47,149 [INFO] Uploading file: PhonePe_Statement_Mar2025_Apr2025 (1).pdf, Source selected: phonepe
