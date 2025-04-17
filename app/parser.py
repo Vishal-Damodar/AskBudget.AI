@@ -12,7 +12,7 @@ from datetime import datetime
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [%(levelname)s] %(message)s",
-    handlers=[logging.FileHandler("backend.log"), logging.StreamHandler()]
+    handlers=[logging.FileHandler("logs/backend.log"), logging.StreamHandler()]
 )
 
 def parse_statement(file_bytes: bytes, source: str) -> List[Dict]:
@@ -24,9 +24,7 @@ def parse_statement(file_bytes: bytes, source: str) -> List[Dict]:
             logging.info(f"PDF opened with {len(doc)} pages")
             for i, page in enumerate(doc):
                 page_text = page.get_text()
-                logging.info(f"Extracted text from page {i+1}: {len(page_text)} characters")
                 text += page_text
-            logging.info(f"text: {text}")
     except Exception as e:
         logging.exception("Failed to parse PDF with fitz")
 
