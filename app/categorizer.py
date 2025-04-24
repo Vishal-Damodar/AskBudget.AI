@@ -2,7 +2,8 @@
 
 import logging
 from models.llm_wrapper import ask_llm  # You’ll create this in models/
-from app.storage import get_cached_category, cache_category
+from storage.category_cache import get_cached_category, cache_category
+from storage.category_mappings import get_user_category
 
 # Predefined fallback rules
 RULES = {
@@ -27,6 +28,11 @@ def rule_based_category(description: str) -> str:
 def categorize_transaction(txn: dict) -> str:
     description = txn.get("description", "")
     txn_type = txn.get("txn_type", "")
+
+    user_category = get_user_category(description)
+    if user_category:
+        return user_category
+
     prompt = f"Classify the following transaction description into a category like food, rent, shopping, travel, utilities, subscriptions, salary, or other:\n\nDescription: {description}\n\Transaction Type: {txn_type}\n\nJust return a category name without any explanation."
     
      # 1. Check cache

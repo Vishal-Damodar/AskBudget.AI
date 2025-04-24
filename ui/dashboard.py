@@ -1,9 +1,12 @@
 # ui/dashboard.py
 
+
 import streamlit as st
 import pandas as pd
 import requests
 import logging
+import matplotlib.pyplot as plt
+from datetime import datetime
 
 # Setup logger
 logging.basicConfig(
@@ -48,7 +51,7 @@ if uploaded_file and source:
 
         with st.spinner("⏳ Parsing your statement..."):
             response = requests.post(
-                "http://localhost:8000/upload/",
+                "http://127.0.0.1:8000/upload/",
                 files={"file": uploaded_file.getvalue()},
                 data={"source": source}
             )
@@ -68,9 +71,52 @@ if uploaded_file and source:
 
                 st.dataframe(df[["date", "description", "amount", "txn_type", "category"]], use_container_width=True)
 
-
                 logging.info(f"Parsed {len(df)} transactions successfully")
 
+                # --- User Feedback Tagging ---
+                st.markdown("### 🏷️ Tag Unknown Vendors")
+                with st.form("tag_form"):
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        vendor = st.selectbox("Choose a vendor to tag", df["description"].unique())
+                    with col2:
+                        category = st.selectbox("Assign a category", ["Food", "Rent", "Travel", "Shopping", "Subscriptions", "Salary","Family & Friends", "Others"])
+
+                    submitted = st.form_submit_button("✅ Tag Vendor")
+
+                    if submitted:
+                        tag_response = requests.post(
+                            "http://localhost:8000/tag/",
+                            data={"vendor": vendor, "category": category}
+                        )
+                        if tag_response.status_code == 200:
+                            st.success(f"Tagged '{vendor}' as '{category}' successfully!")
+                        else:
+                            st.error("❌ Failed to tag vendor. Please try again.")
+
+                # Now fetch the monthly summary
+                summary_response = requests.post("http://localhost:8000/monthly_summary/",json=parsed)
+
+                
+                if summary_response.status_code == 200:
+                    summary_data = summary_response.json()
+                    summary_df = pd.DataFrame(summary_data)
+
+                    # Plot a Bar Chart for the Monthly Summary
+                    st.markdown("### 📊 Monthly Expense Summary")
+                    st.dataframe(summary_df)
+
+                    # Plotting a bar chart
+                    fig, ax = plt.subplots()
+                    ax.bar(summary_df['category'], summary_df['total_spend'], color='skyblue')
+                    ax.set_xlabel('Category')
+                    ax.set_ylabel('Total Spend (₹)')
+                    ax.set_title(f"Total Spend per Category for {datetime.now().strftime('%B %Y')}")
+                    plt.xticks(rotation=45)
+                    st.pyplot(fig)
+
+                else:
+                    st.error("❌ Failed to fetch monthly summary data.")
             else:
                 error_msg = response_json.get("error", "Unknown error")
                 st.error(f"❌ Could not parse statement. Reason: {error_msg}")
